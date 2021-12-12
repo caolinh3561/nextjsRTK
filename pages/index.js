@@ -43,7 +43,7 @@ const randomId = (min,max) => {
   return Math.round(Math.random()*(max - min));
 }
 
-export async function getInitialProps(context) {
+export async function getStaticProps(context) {
   console.log("getStaticProps Run!");
   const res = await fetch(`https://picsum.photos/v2/list?page=2&limit=${randomId(10,20)}`)
   const data = await res.json()
@@ -56,6 +56,6 @@ export async function getInitialProps(context) {
 
   return {
     props: { data }, // will be passed to the page component as props
-    revalidate: 20,
+    revalidate: 10,
   }
 }
