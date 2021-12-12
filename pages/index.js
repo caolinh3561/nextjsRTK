@@ -43,7 +43,7 @@ const randomId = (min,max) => {
   return Math.round(Math.random()*(max - min));
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   console.log("getStaticProps Run!");
   const res = await fetch(`https://picsum.photos/v2/list?page=2&limit=${randomId(10,20)}`)
   const data = await res.json()
