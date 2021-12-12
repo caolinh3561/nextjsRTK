@@ -24,7 +24,7 @@ export default function Home({data}) {
     <div id="container" style={{textAlign:"center",marginTop:"100px"}}>
       <h1>Demo NextJs</h1>
       <div className="wrap" style={{
-        margin:"100px",
+      margin:"100px",
       display:"flex",
       alignItems: "center",
       flexWrap:"wrap",
