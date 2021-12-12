@@ -19,7 +19,8 @@ export default function Home({data}) {
     const action = getPosts(data);
     dispatch(action);
   }, []);
-// console.log("Here is posts "+JSON.stringify(posts));
+  console.log("posts from store: ",posts);
+  
   return (
     <div id="container" style={{textAlign:"center",marginTop:"100px"}}>
       <h1>Demo NextJs</h1>
