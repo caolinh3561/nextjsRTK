@@ -20,7 +20,7 @@ export default function Home({data}) {
     dispatch(action);
   }, []);
   console.log("data from state: ",posts);
-  if(!posts) return <></>;
+  if(!data) return <></>;
   return (
     <div id="container" style={{textAlign:"center",marginTop:"100px"}}>
       <h1>Demo NextJs</h1>
@@ -32,7 +32,7 @@ export default function Home({data}) {
       gap:"25px",
       justifyContent:"center", 
       }}>
-      {posts.map(post => {
+      {data.map(post => {
         return <ImageComponent key={post.id} post={post} />
       })}
       </div>
