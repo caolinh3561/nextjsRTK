@@ -19,8 +19,8 @@ export default function Home({data}) {
     const action = getPosts(data);
     dispatch(action);
   }, []);
-  console.log("posts from store: ",posts);
-  
+  console.log("data from state: ",posts);
+  if(!posts) return <></>;
   return (
     <div id="container" style={{textAlign:"center",marginTop:"100px"}}>
       <h1>Demo NextJs</h1>
@@ -32,7 +32,7 @@ export default function Home({data}) {
       gap:"25px",
       justifyContent:"center", 
       }}>
-      {posts && posts.map(post => {
+      {posts.map(post => {
         return <ImageComponent key={post.id} post={post} />
       })}
       </div>
@@ -41,12 +41,12 @@ export default function Home({data}) {
 }
 
 const randomId = (min,max) => {
-  return Math.round(Math.random()*(max - min));
+  return Math.round(Math.random()*(max - min) + min);
 }
 
 export async function getStaticProps(context) {
   console.log("getStaticProps Run!");
-  const res = await fetch(`https://picsum.photos/v2/list?page=2&limit=${randomId(10,20)}`)
+  const res = await fetch(`https://picsum.photos/v2/list?page=${randomId(1,100)}`)
   const data = await res.json()
 
   if (!data) {
@@ -54,9 +54,9 @@ export async function getStaticProps(context) {
       notFound: true,
     }
   }
-
+  console.log("data from getStaticProps: ",data);
   return {
     props: { data }, // will be passed to the page component as props
-    revalidate: 10,
+    revalidate: 20,
   }
 }
