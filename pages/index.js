@@ -46,7 +46,7 @@ const randomId = (min,max) => {
 
 export async function getStaticProps(context) {
   console.log("getStaticProps Run!");
-  const res = await fetch(`https://picsum.photos/v2/list?page=${randomId(1,100)}`)
+  const res = await fetch(`https://picsum.photos/v2/list?page=${randomId(1,20)}`)
   const data = await res.json()
 
   if (!data) {
