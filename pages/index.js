@@ -10,9 +10,6 @@ export default function Home({data}) {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.posts);
 
-//https://picsum.photos/v2/list
-//let x = Math.round(Math.random()* 99);
-
   useEffect(() => {
     console.log("useEffect run!");
     if(!data) return;
@@ -46,7 +43,7 @@ const randomId = (min,max) => {
 
 export async function getStaticProps(context) {
   console.log("getStaticProps Run!");
-  const res = await fetch(`https://picsum.photos/v2/list?page=${randomId(1,20)}`)
+  const res = await fetch(`https://picsum.photos/v2/list?page=${randomId(10,20)}`)
   const data = await res.json()
 
   if (!data) {
@@ -57,6 +54,6 @@ export async function getStaticProps(context) {
   console.log("data from getStaticProps: ",data);
   return {
     props: { data }, // will be passed to the page component as props
-    revalidate: 20,
+    revalidate: 40,
   }
 }
